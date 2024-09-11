@@ -1,0 +1,12 @@
+# SMTP (for sending emails)
+spring.mail.host=smtp.enterprisemail.in
+spring.mail.port=587
+spring.mail.username=itech@bminfotradegroup.com
+spring.mail.password=je|Et^D9"0Bl4gS0H0
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+# POP3 (for receiving emails)
+mail.pop3.host=enterprisemail.in
+mail.pop3.port=995
+mail.pop3.ssl.enable=true

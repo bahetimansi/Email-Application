@@ -1,0 +1,29 @@
+## SMTP (for sending emails)
+#spring.mail.host=smtp.enterprisemail.in
+#spring.mail.port=587
+#spring.mail.username=itech@bminfotradegroup.com
+#spring.mail.password=je|Et^D9"0Bl4gS0H0
+#spring.mail.properties.mail.smtp.auth=true
+#spring.mail.properties.mail.smtp.starttls.enable=true
+
+
+# SMTP Server Configuration
+spring.mail.host=smtp.enterprisemail.in
+spring.mail.port=587
+spring.mail.username=itech@bminfotradegroup.com
+spring.mail.password=je|Et^D9"0Bl4gS0H0
+
+# SMTP Authentication and TLS settings
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.ssl.checkserveridentity=false
+
+
+# Optional: Specify the protocol if needed
+spring.mail.protocol=smtp
+
+# Optional: Add TLS version to be used
+spring.mail.properties.mail.smtp.ssl.protocols=TLSv1.2
+
+# Optional: For debugging purposes (set to false in production)
+spring.mail.properties.mail.debug=true

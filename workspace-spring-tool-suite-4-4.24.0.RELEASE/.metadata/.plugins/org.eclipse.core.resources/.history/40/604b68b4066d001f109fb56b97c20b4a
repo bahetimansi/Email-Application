@@ -1,0 +1,70 @@
+package com.example.demo.service;
+
+import java.util.Properties;
+
+import org.springframework.stereotype.Service;
+
+import jakarta.mail.Folder;
+import jakarta.mail.Message;
+import jakarta.mail.Session;
+import jakarta.mail.Store;
+import jakarta.mail.internet.InternetAddress;
+
+@Service
+public class EmailService {
+
+//    @Autowired
+//    private JavaMailSender mailSender;
+//
+//    public void sendMail(String to, String subject, String body) {
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom("mansibaheti2603@gmail.com");
+//        message.setTo("priyan043528@gmail.com");
+//        message.setSubject(subject);
+//        message.setText(body);
+//
+//        mailSender.send(message);
+//        System.out.println("Mail sent successfully to " + to);
+//    }
+//}
+    
+   
+
+        public String fetchEmails() {
+            Properties properties = new Properties();
+            properties.put("mail.pop3.host", "enterprisemail.in");
+            properties.put("mail.pop3.port", "995");
+            properties.put("mail.pop3.ssl.enable", "true");
+
+            final String username = "your_username@example.com";
+            final String password = "your_password";
+
+            Session session = Session.getDefaultInstance(properties);
+            StringBuilder emailContent = new StringBuilder();
+
+            try {
+                Store store = session.getStore("pop3s");
+                store.connect("enterpris"
+                		+ "email.in", username, password);
+
+                Folder inbox = store.getFolder("INBOX");
+                inbox.open(Folder.READ_ONLY);
+
+                Message[] messages = inbox.getMessages();
+                for (Message message : messages) {
+                    emailContent.append("Subject: ").append(message.getSubject()).append("\n");
+                    emailContent.append("From: ").append(InternetAddress.toString(message.getFrom())).append("\n");
+                    emailContent.append("Content: ").append(message.getContent().toString()).append("\n\n");
+                }
+
+                inbox.close(false);
+                store.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "Error fetching emails.";
+            }
+
+            return emailContent.toString();
+        }
+    }
+
